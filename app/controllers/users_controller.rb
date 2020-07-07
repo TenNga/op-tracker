@@ -11,9 +11,17 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
+        user = User.create({
+            user_name: params[:user_name],
+            password: params[:password],
+            role: params[:role]
+        })
 
-        render json: user
+        if user.save
+            render json: user
+        else
+            render json: {error: user.errors.full_messages}
+        end
     end
 
     private 
