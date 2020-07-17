@@ -10,4 +10,21 @@ class JobsController < ApplicationController
 
         render json: job 
     end
+
+    def create
+        job = Job.create(job_params)
+
+        if job.save
+            render json: job
+        else
+            render json: {error: job.errors.full_messages}
+        end
+    end
+
+    private 
+
+    def job_params
+        params.require(:job).permit(:company, :role, :date, :status, :link, :user_id, :note)
+    end
+
 end
