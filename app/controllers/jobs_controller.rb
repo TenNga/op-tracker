@@ -21,6 +21,18 @@ class JobsController < ApplicationController
         end
     end
 
+    def destroy
+        # byebug
+        job = Job.find(params[:id])
+        # byebug
+        if job.destroy
+            render json: {success: "Job Deleted"}
+        else 
+            render json: {error: job.errors.full_messages}
+        end 
+
+    end
+
     private 
 
     def job_params
