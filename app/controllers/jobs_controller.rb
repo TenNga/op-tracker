@@ -21,6 +21,14 @@ class JobsController < ApplicationController
         end
     end
 
+    def update
+        job = Job.find(params[:id])
+        job.update(job_params)
+        
+        render json: job
+    
+    end
+
     def destroy
         # byebug
         job = Job.find(params[:id])
