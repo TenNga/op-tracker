@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.1'
+ruby '3.1.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
@@ -21,8 +21,10 @@ gem 'active_model_serializers', '~> 0.10.0'
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
-
+# gem 'bootsnap', '>= 1.4.2', require: false
+if RUBY_ENGINE != 'jruby'
+  gem 'bootsnap', '1.18.4', require: false
+end
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
@@ -40,11 +42,21 @@ end
 
 group :development do
     # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '1.7.3'
+  gem 'jdbc-sqlite3'
+
+gem 'activerecord-jdbcsqlite3-adapter'
+
 end
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
+  # gem 'pg', '1.5.8'
+  gem 'jdbc-postgres'
+
+gem 'activerecord-jdbcpostgresql-adapter'
+
   gem 'rails_12factor'
 end
 
