@@ -22,9 +22,9 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 # gem 'bootsnap', '>= 1.4.2', require: false
-if RUBY_ENGINE != 'jruby'
-  gem 'bootsnap', '1.18.4', require: false
-end
+# if RUBY_ENGINE != 'jruby'
+  gem 'bootsnap', '1.18.4', require: false if RUBY_ENGINE == 'ruby'
+# end
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
