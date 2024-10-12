@@ -25,6 +25,18 @@ gem 'active_model_serializers', '~> 0.10.0'
 # if RUBY_ENGINE != 'jruby'
   gem 'bootsnap', '1.18.4', require: false
 # end
+
+
+gem 'ostruct'
+gem 'mutex_m'
+gem 'logger'
+gem 'base64'
+gem 'bigdecimal'
+gem 'drb'
+
+
+
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
